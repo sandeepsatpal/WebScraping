@@ -20,30 +20,8 @@ def get_events_josn_data(game,url):
                 csvfile.write(game + "," + snm + "," + cnm + "," + time + "," + team1 + "," + team2)
                 csvfile.write("\n")
 
-def get_events_url_data(url):
+def get_events_html_data(url):
     pass
-
-    # Create a session
-    #session = HTMLSession()
-
-    # Render the dynamic webpage
-    #response = session.get(url)
-    #response.html.render()  # Renders JavaScript
-
-    # Extract HTML content
-    #html = response.html.html
-
-    #html = requests.get(url).text
-    #html = open('tempinput.html', encoding="utf-8")
-    #print(html)
-    #file = open("example.html", "w", encoding="utf-8")
-    #file.write(html)
-    #file.close()
-    #soup = BeautifulSoup(html, 'lxml')
-    #events = soup.find_all('div', class_='Ap Ep')
-
-    #for event in events:
-    #    print(event.span.text)
 
 def get_livescore_data():
     allevents = {"soccer","hockey","basketball","tennis","cricket"}
