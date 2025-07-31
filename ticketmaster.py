@@ -33,3 +33,4 @@ def get_events_html_data(url):
 
 def get_ticketmaster_data():
     get_events_html_data('https://guides.ticketmaster.co.uk/sports-guide/')
+

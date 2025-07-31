@@ -18,12 +18,13 @@ headers = {
     'User-Agent': custom_user_agent
 }
 
-
+'''
 # Set path to your chromedriver
 service = Service('D:\Personal\PythonLearning\chromedriver-win64\chromedriver-win64\chromedriver.exe')
 options = webdriver.ChromeOptions()
 options.add_argument('--headless')
 driver = webdriver.Chrome(service=service)
+'''
 
 def get_events_josn_data(game,url):
     json_data_url = requests.get(url).text
@@ -39,6 +40,7 @@ def get_events_josn_data(game,url):
                 csvfile.write(game + "," + snm + "," + cnm + "," + time + "," + team1 + "," + team2)
                 csvfile.write("\n")
 
+'''
 def get_events_html_data(url):
     driver.get(url)
     # Let JavaScript load (you can tweak the sleep time or use WebDriverWait)
@@ -55,10 +57,21 @@ def get_events_html_data(url):
             team2 = teams[1].text
             print(team1,team2)
 
+'''
+
+def get_events_html_data_zenrows_proxy(url):
+    apikey = '####'
+    params = {
+        'url': url,
+        'apikey': apikey,
+    }
+    with open("eventimezenrow.html", "w", encoding='utf-8') as htmlfile:
+        response = requests.get('https://api.zenrows.com/v1/', params=params)
+        htmlfile.write(response.text)
+
 def get_livescore_data():
-
-    get_events_html_data("https://www.livescore.com/en/basketball/")
-
+    #get_events_html_data("https://www.livescore.com/en/basketball/")
+    get_events_html_data_zenrows_proxy("https://www.eventim.co.uk/categories/")
     '''
     allevents = {"soccer","hockey","basketball","tennis","cricket"}
     start_date = datetime.now()
