@@ -1,5 +1,5 @@
 # WebScraping
-This repository contains different web scrapping logic
+This repository contains different web scrapping logic for varieties of web pages like
 1. Static html content
 2. Dynamic html pages which loads the content via javascripts/API calls
 3. Web pages with captcha
@@ -7,19 +7,54 @@ This repository contains different web scrapping logic
 
 # WebScraping methods 
 
-1. ticketmaster.py -> get_events_html_data: <br />
-   This methond extracts the static html content using beautiful soup
+1. <b> Static content </b><br/>
 
-2. livescore.py -> get_events_josn_data and enentime.py -> get_eventime_json_data: <br />
-   This methods demostract how to extract data from dynamic pages which internally uses API calls with different parameters
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		Web pages with static contents are easiet to scrape. <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   	Below python module extract static content and save them in csv/tsv file using beautiful soup. <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   	<u><i> ticketmaster.py -> get_events_html_data </i></u> <br />
+</p>
 
-3. livescore.py -> get_events_html_data: <br />
-   If finding API in the html page is difficult as they are hidden sometimes, we can also extract dynamic web content using browser extension like chromedriver. In this method, dynamic data is extracted using chromedriver. But this method is generally slow and useful for smaller set of urls. Till entire dynamic content is loaded, extracting needs to wait.
+2. <b>Dynamic content</b><br/>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Html pages can download the data dynamically using javascript/API calls. There are different methods to scrape such pages. </p></br>
+</p>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 1: Scrape through API calls </b> </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Find the API calls from html page/javascript and use them directly in Python.</br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Below python module uses API to scrape Json and store them in csv/tsv file. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i> livescore.py -> get_events_josn_data </i><br /> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i>enentime.py -> get_eventime_json_data  </i> <br />
+</p>
 
-4. eventime.py -> get_eventime_topUrls_rotating_proxies: <br />
-   This method uses Freeproxy: https://pypi.org/project/free-proxy/ (python free-proxy) module to get the free proxy in the python code. It is possible that http or https proxies are not available when you run the code. Either you need to run at different time or buy the proxies.
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 2: Using browser extension </b> </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If finding API in the html page is difficult as they are hidden sometimes, we can also extract dynamic web content using browser extension like chromedriver. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below python module uses chromedriver to scrape and store them in csv/tsv. But this method is generally slow and useful for smaller set of urls. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Till entire dynamic content is loaded, extraction needs to wait. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i> livescore.py -> get_events_html_data</i> <br />
 
-5. livescore.py -> get_events_html_data_zenrows_proxy: <br />
-   This method uses zenrows proxy. This is not free. Once purchase, you need to provide API Key to get the support of proxies.
+3. <b> Rotating proxy for anti-bot scraping </b>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Server may block IP address if scraping is done through code. So it is important to rotate proxies. </p> <br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; There are different methods to handle rotating proxies
+</p>
+<p>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 1: Free Proxy </b> </br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Python provides free-proxy package. </br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below python module uses Freeproxy: https://pypi.org/project/free-proxy/ (python free-proxy) module to generate proxies and use them to scrape web pages. </br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; It is possible that http or https proxies are not available when you run the code. Either you need to run at different time or buy the proxies.</br>
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> eventime.py -> get_eventime_topUrls_rotating_proxies </i> </br>
+</p>
+<p>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 2: Buy proxies using zenrows </b> </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Other efficient way is to buy the proxies (like zenrows) and use them to scrape web pages. </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Once purchase, you get API key which you need to pass. </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below python module demostrate this logic. </br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i> livescore.py -> get_events_html_data_zenrows_proxy </i> <br />
+</p>
+
+
+   
     
 
