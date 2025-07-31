@@ -15,5 +15,11 @@ This repository contains different web scrapping logic
 
 3. livescore.py -> get_events_html_data: <br />
    If finding API in the html page is difficult as they are hidden sometimes, we can also extract dynamic web content using browser extension like chromedriver. In this method, dynamic data is extracted using chromedriver. But this method is generally slow and useful for smaller set of urls. Till entire dynamic content is loaded, extracting needs to wait.
+
+4. eventime.py -> get_eventime_topUrls_rotating_proxies: <br />
+   This method uses Freeproxy: https://pypi.org/project/free-proxy/ (python free-proxy) module to get the free proxy in the python code. It is possible that http or https proxies are not available when you run the code. Either you need to run at different time or buy the proxies.
+
+5. livescore.py -> get_events_html_data_zenrows_proxy: <br />
+   This method uses zenrows proxy. This is not free. Once purchase, you need to provide API Key to get the support of proxies.
     
 
