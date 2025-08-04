@@ -28,11 +28,19 @@ This repository contains different web scrapping logic for varieties of web page
 </p>
 
 <p>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 2: Using browser extension </b> </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 2: Using browser extension (Selenium and chrome driver) </b> </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; If finding API in the html page is difficult as they are hidden sometimes, we can also extract dynamic web content using browser extension like chromedriver. </br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below python module uses chromedriver to scrape and store them in csv/tsv. But this method is generally slow and useful for smaller set of urls. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below python module uses selenium and chromedriver to scrape and store them in csv/tsv. But this method is generally slow and useful for smaller set of urls. </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Till entire dynamic content is loaded, extraction needs to wait. </br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i> livescore.py -> get_events_html_data</i> <br />
+
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Method 3: Using browser extension (Playwright and chromium) </b> </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Although Selenium remains the go-to for legacy browser support, cross-browser testing, and enterprise environments due to its mature ecosystem and wider language support </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Playwright is ideal for modern web applications, offering faster execution, better handling of dynamic content, and built-in features like auto-waiting and network interception </br> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Below python module uses playwright and chromium in async mode to scrape and store them in csv/tsv. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Till entire dynamic content is loaded, extraction needs to wait. </br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i> livescore.py -> get_events_html_data_playwright </i> <br />
 
 3. <b> Rotating proxy for anti-bot scraping </b>
 <p>
