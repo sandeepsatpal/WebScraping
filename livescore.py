@@ -1,3 +1,5 @@
+import asyncio
+from playwright.async_api import async_playwright
 import datetime
 import json
 from datetime import datetime
@@ -40,6 +42,33 @@ def get_events_josn_data(game,url):
                 csvfile.write(game + "," + snm + "," + cnm + "," + time + "," + team1 + "," + team2)
                 csvfile.write("\n")
 
+async def get_events_html_data_playwright(url):
+    async with async_playwright() as p:
+        browser = await p.chromium.launch(headless=True)
+        page = await browser.new_page()
+
+        # Load the page and wait for full network activity to settle
+        await page.goto(url, wait_until="networkidle")
+
+        # Optional: run custom JavaScript if needed
+        await page.evaluate("""() => {
+            // Example: scroll to bottom to trigger lazy loading
+            window.scrollTo(0, document.body.scrollHeight);
+        }""")
+
+        with open("temp.html", "w", encoding='utf-8') as htmlfile:
+            events = await page.query_selector_all('div[class="zp Ep"]')
+
+            for event in events:
+                teams = await event.query_selector_all('div[class="Kp"]')
+                team1 = await teams[0].text_content()
+                team2 = await teams[1].text_content()
+                print(team1,team2)
+            #htmlfile.write(html)
+        # Get the full HTML content
+
+        await browser.close()
+
 '''
 def get_events_html_data(url):
     driver.get(url)
@@ -71,7 +100,8 @@ def get_events_html_data_zenrows_proxy(url):
 
 def get_livescore_data():
     #get_events_html_data("https://www.livescore.com/en/basketball/")
-    get_events_html_data_zenrows_proxy("https://www.eventim.co.uk/categories/")
+    #get_events_html_data_zenrows_proxy("https://www.eventim.co.uk/categories/")
+    asyncio.run(get_events_html_data_playwright("https://www.livescore.com/en/basketball/"))
     '''
     allevents = {"soccer","hockey","basketball","tennis","cricket"}
     start_date = datetime.now()
